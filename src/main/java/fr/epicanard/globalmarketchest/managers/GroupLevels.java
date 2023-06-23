@@ -94,7 +94,6 @@ public enum GroupLevels {
         builder.setExtension("GROUP BY itemStack");
         break;
       case 2:
-        builder.addField("id");
         builder.addField("itemMeta");
         builder.addField("COUNT(itemMeta) AS count");
         builder.setExtension("GROUP BY itemMeta");
