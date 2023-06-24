@@ -98,7 +98,7 @@ public enum GroupLevels {
         builder.addField("itemMeta");
         builder.addField("COUNT(itemMeta) AS count");
 
-        builder.setExtension("GROUP BY itemMeta ORDER BY position ASC, itemMeta ASC");
+        builder.setExtension("GROUP BY itemMeta ORDER BY MIN(position) ASC, itemMeta ASC");
         break;
       case 1:
         builder.setExtension("ORDER BY price ASC, start ASC");
