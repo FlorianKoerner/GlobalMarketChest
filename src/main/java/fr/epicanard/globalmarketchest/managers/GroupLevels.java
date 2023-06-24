@@ -9,6 +9,7 @@ import fr.epicanard.globalmarketchest.utils.DatabaseUtils;
 import fr.epicanard.globalmarketchest.utils.ItemStackUtils;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public enum GroupLevels {
   LEVEL3(3, null),
@@ -96,7 +97,10 @@ public enum GroupLevels {
       case 2:
         builder.addField("itemMeta");
         builder.addField("COUNT(itemMeta) AS count");
-        builder.setExtension("GROUP BY itemMeta ORDER BY id ASC");
+
+        Collections.reverse(Arrays.asList(items));
+
+        builder.setExtension("GROUP BY itemMeta ORDER BY FIELD(name,\"" + String.join("\",\"", items); + "\") DESC, itemMeta ASC");
         break;
       case 1:
         builder.setExtension("ORDER BY price ASC, start ASC");
